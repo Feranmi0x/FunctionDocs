@@ -1,0 +1,113 @@
+﻿@page
+@model FunctionDocs.Pages.IndexModel
+@{
+    ViewData["Title"] = "Function List";
+}
+
+@section Styles {
+    <style>
+        .function-entry {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 1rem;
+    margin: 0 auto 1.5rem auto;       /* Center the block */
+    background-color: #f9f9f9;
+    max-width: 600px;                 /* 👈 Limit the width */
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+        .function-header {
+            font-weight: bold;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .code-block {
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+    padding: 1rem;
+    border-radius: 6px;
+    position: relative;
+    font-family: Consolas, monospace;
+    margin-bottom: 0.75rem;
+
+    /* 👇 Important changes */
+    overflow-x: auto;
+    white-space: pre-wrap;      /* Wrap lines */
+    word-wrap: break-word;      /* Break long words */
+    max-width: 100%;            /* Don't exceed parent width */
+}
+
+        .copy-button {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            background-color: #555;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .copy-button:hover {
+            background-color: #777;
+        }
+
+        .function-description {
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        .title {
+            margin-top: 5px;
+        }
+
+        @@media (max-width: 768px) {
+        .title {
+            margin-top: 44px;
+        }
+        
+    </style>
+}
+
+<div class="container">
+    <h2 class="mb-4 text-center title">Function Documentation</h2>
+
+    @if (Model.Functions.Any())
+    {
+        @foreach (var fn in Model.Functions)
+        {
+            <div class="function-entry">
+                <div class="function-header">@fn.FunctionName</div>
+
+                <div class="code-block">
+                    <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    <pre><code>@fn.CodeExample</code></pre>
+                </div>
+
+                <div class="function-description">@fn.Description</div>
+            </div>
+        }
+    }
+    else
+    {
+        <p>No functions added yet. <a asp-page="/AddFunction">Add one</a></p>
+    }
+</div>
+
+}
+
+@section Scripts {
+    <script>
+        function copyCode(button) {
+            const code = button.nextElementSibling.innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                button.innerText = "Copied!";
+                setTimeout(() => button.innerText = "Copy", 1500);
+            });
+        }
+    </script>
+}

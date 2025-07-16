@@ -1,0 +1,45 @@
+@page
+@model FunctionDocs.Pages.AddFunctionModel
+@{
+    ViewData["Title"] = "Add Function";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4 marginer">Add a New Function</h2>
+
+    <form method="post">
+        <div class="mb-3">
+            <label asp-for="Function.FunctionName" class="form-label"></label>
+            <input asp-for="Function.FunctionName" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Function.Description" class="form-label"></label>
+            <textarea asp-for="Function.Description" class="form-control" rows="3" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Function.CodeExample" class="form-label"></label>
+            <textarea asp-for="Function.CodeExample" class="form-control" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Function</button>
+    </form>
+
+    @if (Model.SuccessMessage != null)
+    {
+        <div class="alert alert-success mt-3">
+            @Model.SuccessMessage
+        </div>
+    }
+</div>
+
+<style>
+
+    .marginer {
+            margin-top: 5px;
+        }
+
+        @@media (max-width: 768px) {
+        .marginer {
+            margin-top: 50px;
+        }
+    
+</style>

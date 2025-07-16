@@ -1,0 +1,60 @@
+﻿@page
+@model AboutModel
+@{
+    ViewData["Title"] = "About This Site";
+}
+
+<div class="about-container marginer">
+    <h1 class="title">@ViewData["Title"]</h1>
+
+    <p class="lead">
+        <strong>FunctionDocs</strong> is a simple, elegant web app designed to help developers document functions, their use cases, and code examples — all in one place.
+    </p>
+
+    <p>
+        Whether you're building a personal reference, collaborating on shared utilities, or just organizing your thoughts, this platform makes it easy to post and browse function entries in a clean, readable format.
+    </p>
+
+    <p>
+        This project was thoughtfully built using <strong>.NET</strong> and <strong>C#</strong>, with a focus on clarity, usability, and speed.
+    </p>
+    <p style="line-height: 1.6;"></p>
+    This model permits users(<span style="color: red; font-weight: bold;">developers only</span>) to contribute function content to the platform from Emcel Garden, opposite Mega One Event Center, Orchid Road, Lagos Island.
+    Please note that any misuse of this privilege will result in access being restricted to admin-only permissions.
+    </p>
+    <p>
+        <strong>Created by:</strong> Feranmi OMODARA
+    </p>
+</div>
+
+<style>
+    .about-container {
+        max-width: 800px;
+        margin: 1rem auto;
+        padding: 1rem;
+        background-color: #fefefe;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+    }
+
+    .title {
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    .lead {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .marginer {
+            margin-top: 5px;
+        }
+
+        @@media (max-width: 768px) {
+        .marginer {
+            margin-top: 44px;
+        }
+    
+</style>
