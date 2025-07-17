@@ -159,3 +159,5 @@
 /Users/mac/FunctionsApp/obj/Debug/net8.0/FunctionsApp.pdb
 /Users/mac/FunctionsApp/obj/Debug/net8.0/FunctionsApp.genruntimeconfig.cache
 /Users/mac/FunctionsApp/obj/Debug/net8.0/ref/FunctionsApp.dll
+/Users/mac/FunctionsApp/bin/Debug/net8.0/Npgsql.dll
+/Users/mac/FunctionsApp/bin/Debug/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
