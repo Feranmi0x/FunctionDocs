@@ -1,9 +1,13 @@
+
+
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using FunctionDocs.Data; // Make sure this matches your AppDbContext namespace
-using FunctionDocs.Models; // Make sure this matches your FunctionEntry namespace
+using FunctionDocs.Data;
+using FunctionDocs.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FunctionDocs.Pages
 {
@@ -23,6 +27,20 @@ namespace FunctionDocs.Pages
         public void OnGet()
         {
             Functions = _context.FunctionEntries.ToList();
+        }
+
+        // 🧨 Add this method for deleting a function entry
+        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        {
+            var entry = await _context.FunctionEntries.FindAsync(id);
+
+            if (entry != null)
+            {
+                _context.FunctionEntries.Remove(entry);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToPage("./Index");
         }
     }
 }
